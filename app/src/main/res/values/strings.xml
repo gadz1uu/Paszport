@@ -1,0 +1,4 @@
+<resources>
+    <!-- wpisz swój numer zdającego zamiast 00000000000 -->
+    <string name="app_name">Wprowadzenie danych do paszportu. Wykonał: 00000000000</string>
+</resources>

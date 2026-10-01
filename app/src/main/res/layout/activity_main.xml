@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cadetBlue">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:maxLines="1"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="8sp"
+            app:autoSizeMaxTextSize="16sp"
+            android:text="@string/app_name"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numer" />
+
+        <EditText
+            android:id="@+id/etNumer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/azure"
+            android:inputType="number"
+            android:padding="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Imię" />
+
+        <EditText
+            android:id="@+id/etImie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/azure"
+            android:inputType="textPersonName"
+            android:padding="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Nazwisko" />
+
+        <EditText
+            android:id="@+id/etNazwisko"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/azure"
+            android:inputType="textPersonName"
+            android:padding="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Kolor oczu" />
+
+        <RadioGroup
+            android:id="@+id/rgKolorOczu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/rbNiebieskie">
+
+            <RadioButton
+                android:id="@+id/rbNiebieskie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="niebieskie" />
+
+            <RadioButton
+                android:id="@+id/rbZielone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="zielone" />
+
+            <RadioButton
+                android:id="@+id/rbPiwne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="piwne" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivZdjecie"
+                android:layout_width="wrap_content"
+                android:layout_height="180dp"
+                android:layout_marginEnd="16dp"
+                android:adjustViewBounds="true" />
+
+            <ImageView
+                android:id="@+id/ivOdcisk"
+                android:layout_width="wrap_content"
+                android:layout_height="180dp"
+                android:adjustViewBounds="true" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/azure"
+            android:text="OK"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+    </LinearLayout>
+</ScrollView>
