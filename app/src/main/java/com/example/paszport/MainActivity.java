@@ -23,7 +23,7 @@ import java.io.InputStream;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "Paszport";
-
+    // Klasa sprawdzająca dane paszportowe i tworząca nazwy plików graficznych
     private EditText etNumer, etImie, etNazwisko;
 
     private RadioGroup rgKolorOczu;
