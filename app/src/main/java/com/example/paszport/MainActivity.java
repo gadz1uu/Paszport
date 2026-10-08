@@ -20,18 +20,22 @@ import androidx.core.view.WindowInsetsCompat;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * Ekran do wprowadzania danych do paszportu.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "Paszport";
-    // Klasa sprawdzająca dane paszportowe i tworząca nazwy plików graficznych
-    private EditText etNumer, etImie, etNazwisko;
 
+    private static final String NUMER_POCZATKOWY = "000";
+
+    private EditText etNumer;
+    private EditText etImie;
+    private EditText etNazwisko;
     private RadioGroup rgKolorOczu;
-
-    private ImageView ivZdjecie, ivOdcisk;
-
+    private ImageView ivZdjecie;
+    private ImageView ivOdcisk;
     private Button btnOk;
-
     private TextView tvMessage;
 
     private PassportValidator validator;
@@ -41,11 +45,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        setupWindowInsets();
+        findViews();
+
+        validator = new PassportValidator();
+
+        showImages(NUMER_POCZATKOWY);
+
+        etNumer.setOnFocusChangeListener((view, hasFocus) -> {
+            if (!hasFocus) {
+                showImages(etNumer.getText().toString().trim());
+            }
+        });
+
+        btnOk.setOnClickListener(view -> showMessage());
+    }
+
+    private void setupWindowInsets() {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (view, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    private void findViews() {
         etNumer = findViewById(R.id.etNumer);
         etImie = findViewById(R.id.etImie);
         etNazwisko = findViewById(R.id.etNazwisko);
@@ -54,31 +78,18 @@ public class MainActivity extends AppCompatActivity {
         ivOdcisk = findViewById(R.id.ivOdcisk);
         btnOk = findViewById(R.id.btnOk);
         tvMessage = findViewById(R.id.tvMessage);
-
-        validator = new PassportValidator();
-
-        showImages("000");
-
-        etNumer.setOnFocusChangeListener((v, hasFocus) -> {
-            if (!hasFocus) {
-                showImages(etNumer.getText().toString().trim());
-            }
-        });
-
-        btnOk.setOnClickListener(v -> handleOk());
     }
 
-    private void handleOk() {
+
+    private void showMessage() {
         String imie = etImie.getText().toString();
         String nazwisko = etNazwisko.getText().toString();
-        RadioButton rbChecked = findViewById(rgKolorOczu.getCheckedRadioButtonId());
-        String kolorOczu = rbChecked.getText().toString();
-
         String message;
-        if (!validator.isDataComplete(imie, nazwisko)) {
-            message = "Wprowadź dane";
+
+        if (validator.isDataComplete(imie, nazwisko)) {
+            message = validator.buildMessage(imie.trim(), nazwisko.trim(), getEyeColor());
         } else {
-            message = validator.buildMessage(imie.trim(), nazwisko.trim(), kolorOczu);
+            message = getString(R.string.wprowadz_dane);
         }
 
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
@@ -86,15 +97,22 @@ public class MainActivity extends AppCompatActivity {
         tvMessage.setText(message);
     }
 
+    private String getEyeColor() {
+        RadioButton checkedButton = findViewById(rgKolorOczu.getCheckedRadioButtonId());
+        return checkedButton.getText().toString();
+    }
+
     private void showImages(String numer) {
         setImage(ivZdjecie, validator.getPhotoFileName(numer));
         setImage(ivOdcisk, validator.getFingerprintFileName(numer));
     }
 
+
     private void setImage(ImageView imageView, String fileName) {
         try (InputStream stream = getAssets().open(fileName)) {
             imageView.setImageBitmap(BitmapFactory.decodeStream(stream));
         } catch (IOException e) {
+            Log.d(TAG, "Brak pliku: " + fileName);
             imageView.setImageDrawable(null);
         }
     }

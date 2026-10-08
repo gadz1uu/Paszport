@@ -12,22 +12,19 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Tytuł okna z imieniem i nazwiskiem wykonawcy -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:maxLines="1"
-            app:autoSizeTextType="uniform"
-            app:autoSizeMinTextSize="8sp"
-            app:autoSizeMaxTextSize="16sp"
-            android:text="@string/app_name"
-            android:textColor="#000000"
-            android:textStyle="bold" />
+            android:background="#FFFFFF"
+            android:padding="8dp"
+            android:text="@string/tytul"
+            android:textColor="#000000" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Numer" />
+            android:text="@string/numer" />
 
         <EditText
             android:id="@+id/etNumer"
@@ -41,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Imię" />
+            android:text="@string/imie" />
 
         <EditText
             android:id="@+id/etImie"
@@ -55,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Nazwisko" />
+            android:text="@string/nazwisko" />
 
         <EditText
             android:id="@+id/etNazwisko"
@@ -69,8 +66,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Kolor oczu" />
+            android:text="@string/kolor_oczu" />
 
+        <!-- Można wybrać tylko jedną opcję, domyślnie "niebieskie" -->
         <RadioGroup
             android:id="@+id/rgKolorOczu"
             android:layout_width="match_parent"
@@ -81,21 +79,22 @@
                 android:id="@+id/rbNiebieskie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="niebieskie" />
+                android:text="@string/niebieskie" />
 
             <RadioButton
                 android:id="@+id/rbZielone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="zielone" />
+                android:text="@string/zielone" />
 
             <RadioButton
                 android:id="@+id/rbPiwne"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="piwne" />
+                android:text="@string/piwne" />
         </RadioGroup>
 
+        <!-- Zdjęcie i odcisk palca: obie z wysokością 180dp -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -123,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/azure"
-            android:text="OK"
+            android:text="@string/ok"
             android:textColor="#000000" />
 
         <TextView

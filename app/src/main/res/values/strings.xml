@@ -1,4 +1,13 @@
 <resources>
-    <!-- wpisz swój numer zdającego zamiast 00000000000 -->
-    <string name="app_name">Wprowadzenie danych do paszportu. Wykonał: 00000000000</string>
+    <string name="app_name">Paszport</string>
+    <string name="tytul">Wprowadzenie danych do paszportu. Wykonał: Paweł Dębicki.</string>
+    <string name="numer">Numer</string>
+    <string name="imie">Imię</string>
+    <string name="nazwisko">Nazwisko</string>
+    <string name="kolor_oczu">Kolor oczu</string>
+    <string name="niebieskie">niebieskie</string>
+    <string name="zielone">zielone</string>
+    <string name="piwne">piwne</string>
+    <string name="ok">OK</string>
+    <string name="wprowadz_dane">Wprowadź dane</string>
 </resources>
