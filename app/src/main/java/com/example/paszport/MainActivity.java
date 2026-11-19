@@ -20,9 +20,7 @@ import androidx.core.view.WindowInsetsCompat;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * Ekran do wprowadzania danych do paszportu.
- */
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "Paszport";
